@@ -42,15 +42,15 @@ module ActiveMerchant
 
       def build_rate_request(origin, destination, package, options)
         self.class.api_url + "?" + {
-          Pickup_Postcode: destination.postal_code,
-          Destination_Postcode: origin.postal_code,
-          Country: destination.country.code(:alpha2),
-          Service_Type: options[:service_type],
-          Weight: package.grams,
-          Length: package.centimetres(:length) * 10,
-          Width: package.centimetres(:width) * 10,
-          Height: package.centimetres(:height) * 10,
-          Quantity: 1
+          :Pickup_Postcode => destination.postal_code,
+          :Destination_Postcode => origin.postal_code,
+          :Country => destination.country.code(:alpha2),
+          :Service_Type => @options[:service_type],
+          :Weight => package.grams,
+          :Length => package.centimetres(:length) * 10,
+          :Width => package.centimetres(:width) * 10,
+          :Height => package.centimetres(:height) * 10,
+          :Quantity => 1
         }.to_param
       end
 
